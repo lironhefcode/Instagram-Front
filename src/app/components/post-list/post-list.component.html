@@ -1,1 +1,6 @@
-<p>post-list works!</p>
+
+<ul>
+   @for (story of storeis(); track story._id) {
+    <li>{{story.txt}}</li>
+   }
+</ul>
