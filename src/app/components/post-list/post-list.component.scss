@@ -1,0 +1,12 @@
+
+@import '../../../main.scss';
+ul{
+    display: grid;
+    justify-self: center;
+    list-style: none;
+    li{
+        border-bottom:1px solid $grey-border;
+        margin-bottom: 16px;
+        padding-bottom: 16px;
+    }
+}

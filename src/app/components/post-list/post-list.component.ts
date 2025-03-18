@@ -4,10 +4,11 @@ import { selectStories } from '../../store/slices/sotries-slice';
 import { AsyncPipe, CommonModule } from '@angular/common';
 
 import { StoreisService } from '../../services/storeis.service';
+import { PostPreviewComponent } from '../post-preview/post-preview.component';
 
 @Component({
   selector: 'post-list',
-  imports: [CommonModule],
+  imports: [CommonModule,PostPreviewComponent],
   templateUrl: './post-list.component.html',
   styleUrl: './post-list.component.scss'
 })

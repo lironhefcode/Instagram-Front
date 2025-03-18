@@ -1,6 +1,8 @@
 
 <ul>
    @for (story of storeis(); track story._id) {
-    <li>{{story.txt}}</li>
+    <li>
+        <post-preview [story]="story"/>
+    </li>
    }
 </ul>

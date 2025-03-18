@@ -9,6 +9,9 @@ import { Component, Input } from '@angular/core';
  
 })
 export class UserProfileImageComponent {
-@Input() imgSrc:string = 'userProfile.png'
-@Input() size:number = 32
+
+  @Input() imgSrc:string = 'userProfile.png'
+
+  @Input() size:number = 32
+
 }
