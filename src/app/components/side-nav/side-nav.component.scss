@@ -1,0 +1,19 @@
+.side-nav{
+    display: flex;
+    flex-direction: column;
+  padding-left: 3em;
+  border-right: 1px solid rgb(219, 219, 219);
+  height: 100%;
+ .icon{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    column-gap: 12px;
+    height: 24px;
+    padding: 12px;
+    margin: 4px;
+ }
+ .ig{
+   margin-block: 32px;
+ }
+}
