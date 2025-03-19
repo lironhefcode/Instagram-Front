@@ -118,5 +118,21 @@ export class StoreisService {
 
       this.dispatch(load(this.stories))
     }
+    getEmptyStorty(){
+
+      return {
+      _id: '',
+      txt: '',
+      imgUrl: '',
+      by: {
+        _id: 'a',
+        fullname: '',
+        imgUrl: '',
+      },
+      comments: [],
+      likedBy: [],
+    }
+     
+    }
   constructor() { }
 }

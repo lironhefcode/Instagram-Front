@@ -4,6 +4,7 @@ ul{
     display: grid;
     justify-self: center;
     list-style: none;
+    padding: 0;
     li{
         border-bottom:1px solid $grey-border;
         margin-bottom: 16px;

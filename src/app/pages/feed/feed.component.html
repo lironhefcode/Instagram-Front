@@ -1,4 +1,5 @@
 <main>
-    <side-nav/>
+    <side-nav [showCreateModel]="showCreateModel"/>
     <post-list/>
 </main>
+<create-post-modal [showCreateModel]="showCreateModel "[hidden]="!showCreateModel()"/>

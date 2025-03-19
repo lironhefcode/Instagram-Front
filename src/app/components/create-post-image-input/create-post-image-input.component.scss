@@ -1,0 +1,27 @@
+@import "../../../main.scss";
+header{
+    text-align: center;
+    border-bottom: 1px solid  $grey-border;
+    padding-block: 12px;
+    font-size: 16px;
+    font-weight: 600;
+}
+main{
+    @include flex(center,center);
+    flex-direction: column;
+    gap: 16px;
+    height: calc(100% - 46px);
+    button{
+        background-color: $blue;
+        padding: 7px 16px;
+        border-radius: 8px;
+        border: 0;
+        color: white;
+        font-size: 14px;
+       
+        input{
+         
+           display: none;
+        }
+    }
+}
