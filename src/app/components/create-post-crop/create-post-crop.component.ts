@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'create-post-crop',
@@ -8,5 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './create-post-crop.component.scss'
 })
 export class CreatePostCropComponent {
-
+  @Input({required:true} ) url!:string
+  @Input({required:true} ) onNext!:Function
+  
 }

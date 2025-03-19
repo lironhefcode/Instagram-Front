@@ -118,20 +118,21 @@ export class StoreisService {
 
       this.dispatch(load(this.stories))
     }
-    getEmptyStorty(){
-
-      return {
-      _id: '',
-      txt: '',
-      imgUrl: '',
-      by: {
-        _id: 'a',
-        fullname: '',
+    getEmptyStorty():story{
+      const emptyStory:story =  {
+        _id: '',
+        txt: '',
         imgUrl: '',
-      },
-      comments: [],
-      likedBy: [],
-    }
+        by: {
+          _id: 'a',
+          fullname: '',
+          imgUrl: '',
+        },
+        comments: [],
+        likedBy: [],
+      }
+      console.log(emptyStory)
+      return emptyStory
      
     }
   constructor() { }

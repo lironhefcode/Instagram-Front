@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject, Input, WritableSignal } from '@angular/core';
+import { UploadImgService } from '../../services/upload-img.service';
+import { story } from '../../moudels/stroyInterface';
 
 @Component({
   selector: 'create-post-image-input',
@@ -7,5 +9,19 @@ import { Component } from '@angular/core';
   styleUrl: './create-post-image-input.component.scss'
 })
 export class CreatePostImageInputComponent {
-
+  imageService= inject(UploadImgService)
+  @Input({required:true} ) updateImg!:Function
+ 
+  
+  url= ''
+  onInput(ev:Event){
+    const el = ev.target as HTMLInputElement
+    if(el.files){
+      
+       this.imageService.uploadImage(el.files[0]).subscribe(res => {
+        this.updateImg(res)
+       })
+      
+    }
+  }
 }
