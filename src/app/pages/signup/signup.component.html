@@ -1,0 +1,19 @@
+<div class="singup">
+    <section class="form-container">
+        <img  class="lirongram" src="lirongram.png" alt="">
+        <span class="subtitle">Sign up to see photos and videos from your friends.</span>
+        <form [formGroup]="signUpForm" action="">
+            <input formContorlName="fullname" placeholder="Full name" type="text">
+            <input formControlName="username" placeholder="User name" type="text" >
+            <input formControlName="password" placeholder="password" type="password" >
+            <p >People who use our service may have uploaded your contact information to Instagram.</p>
+            <br>
+            <p>By signing up, you agree to our Terms , Privacy Policy and Cookies Policy .</p>
+            <button type="submit">Sign up</button>
+        </form>
+    </section>
+    <section class="login">
+        <p >Have an account?  <a routerLink="/home">Log in</a></p>
+       
+    </section>
+</div>

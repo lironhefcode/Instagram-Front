@@ -1,0 +1,92 @@
+@import '../../../main.scss';
+
+:host {
+    display: flex;
+    justify-content: center;
+}
+
+.singup {
+    width: 350px;
+    margin-top: 20px;
+
+    .form-container {
+        border: 1px solid $grey-border;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .lirongram {
+            align-self: center;
+            width: 171px;
+            height: 51px;
+            margin-top: 36px;
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            display: block;
+            word-wrap: break-word;
+            margin-inline: 40px;
+            margin-bottom: 10px;
+            line-height: 20px;
+            text-align: center;
+            color: rgb(115, 115, 115);
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 12px;
+            line-height: 16px;
+            font-weight: 400;
+            color: rgb(115, 115, 115);
+        }
+
+        form {
+            margin-inline: 40px;
+            margin-top: 12px;
+
+            input {
+                width: 100%;
+                padding: 9px 0px 7px 8px;
+                margin-bottom: 6px;
+
+                border-radius: 3px;
+                border: 1px solid $grey-border;
+            }
+
+            button {
+                background-color: $blue;
+                outline: 0;
+                border: 0;
+                color: white;
+                margin-block: 16px;
+                margin-bottom: 42px;
+                width: 100%;
+                font-size: 14px;
+                border-radius: 5px;
+                opacity: .7;
+                padding: 7px 16px;
+            }
+        }
+    }
+
+    .login {
+        @include flex(center, center);
+        margin-top: 8px;
+        border: 1px solid $grey-border;
+
+        p {
+            word-wrap: break-word;
+            text-align: center;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            font-size: 14px;
+            a{
+                text-decoration: none;
+                color: $blue;
+                font-weight: 600;
+            }
+        }
+    }
+}
