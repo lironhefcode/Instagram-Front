@@ -1,6 +1,6 @@
 import { Component, inject, Input, WritableSignal } from '@angular/core';
 import { UploadImgService } from '../../services/upload-img.service';
-import { story } from '../../moudels/stroyInterface';
+import { Story } from '../../models/stroyInterface';
 
 @Component({
   selector: 'create-post-image-input',

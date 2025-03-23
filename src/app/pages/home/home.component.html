@@ -1,1 +1,27 @@
-<p>home works!</p>
+<main>
+    <div class="img-container">
+        <div class="switch-img">
+
+            <img [class.active]="(urlIdx === 0)" src="home1.png" alt="">
+            <img [class.active]="(urlIdx === 1)" src="home2.png" alt="">
+            <img [class.active]="(urlIdx === 2)" src="home3.png" alt="">
+            <img [class.active]="(urlIdx === 3)" src="home4.png" alt="">
+        </div>
+    </div>
+    <div>
+        <div class="form-container">
+            <img class="lirongram" src="lirongram.png" alt="">
+            <form action="">
+                <input placeholder="Username, or email" type="text">
+                <input placeholder="Password" type="text" name="" id="">
+                <button>Log in</button>
+            </form>
+        </div>
+        <div class="signup">
+            <div class="text">
+
+                <span>Don't have an account?</span><a href="">  Sign up</a>
+            </div>
+        </div>
+    </div>
+</main>

@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { story } from '../../moudels/stroyInterface'
+import { Story } from '../../models/stroyInterface'
 
 export interface stoiresState {
-  stories: story[]
+  stories: Story[]
 }
 
 const initialState: stoiresState = {
@@ -14,10 +14,10 @@ export const storiesSlice = createSlice({
   name: 'counter',
   initialState,
   reducers: {
-    load: (state,action: PayloadAction<story[]>) => {
+    load: (state,action: PayloadAction<Story[]>) => {
       state.stories = action.payload
     },
-    add: (state,action: PayloadAction<story>) => {
+    add: (state,action: PayloadAction<Story>) => {
       state.stories = [...state.stories,action.payload ]
     },
     // incrementByAmount: (state, action: PayloadAction<number>) => {

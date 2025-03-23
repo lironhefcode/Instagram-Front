@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { story } from '../../moudels/stroyInterface';
+import { Story } from '../../models/stroyInterface';
 import { UserProfileImageComponent } from '../user-profile-image/user-profile-image.component';
 
 @Component({
@@ -9,5 +9,5 @@ import { UserProfileImageComponent } from '../user-profile-image/user-profile-im
   styleUrl: './post-preview.component.scss'
 })
 export class PostPreviewComponent {
-@Input({required:true}) story!:story
+@Input({required:true}) story!:Story
 }
