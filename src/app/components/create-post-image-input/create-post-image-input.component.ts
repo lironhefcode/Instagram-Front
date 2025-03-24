@@ -1,4 +1,4 @@
-import { Component, inject, Input, WritableSignal } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output, WritableSignal } from '@angular/core';
 import { UploadImgService } from '../../services/upload-img.service';
 import { Story } from '../../models/stroyInterface';
 
@@ -10,8 +10,8 @@ import { Story } from '../../models/stroyInterface';
 })
 export class CreatePostImageInputComponent {
   imageService= inject(UploadImgService)
-  @Input({required:true} ) updateImg!:Function
- 
+  // @Input({required:true} ) updateImg!:Function
+ @Output() updateImg= new EventEmitter
   
   url= ''
   onInput(ev:Event){
@@ -19,7 +19,7 @@ export class CreatePostImageInputComponent {
     if(el.files){
       
        this.imageService.uploadImage(el.files[0]).subscribe(res => {
-        this.updateImg(res)
+        this.updateImg.emit(res)
        })
       
     }

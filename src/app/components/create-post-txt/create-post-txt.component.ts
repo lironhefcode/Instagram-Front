@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { UserProfileImageComponent } from '../user-profile-image/user-profile-image.component';
 import { CommonModule } from '@angular/common';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
@@ -9,6 +9,10 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
   styleUrl: './create-post-txt.component.scss'
 })
 export class CreatePostTxtComponent {
-  @Input({required:true}) onShare!:Function
+
   txt = new FormControl('')
+  @Output() share = new EventEmitter
+  onClick(){
+    this.share.emit(this.txt)
+  }
 }
