@@ -11,7 +11,7 @@ const initialState: stoiresState = {
 }
 
 export const storiesSlice = createSlice({
-  name: 'counter',
+  name: 'story',
   initialState,
   reducers: {
     load: (state,action: PayloadAction<Story[]>) => {
@@ -20,9 +20,7 @@ export const storiesSlice = createSlice({
     add: (state,action: PayloadAction<Story>) => {
       state.stories = [...state.stories,action.payload ]
     },
-    // incrementByAmount: (state, action: PayloadAction<number>) => {
-    //   state.value += action.payload
-    // },
+   
   },
 })
 

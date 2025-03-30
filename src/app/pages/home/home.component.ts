@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -11,15 +12,17 @@ import { RouterLink } from '@angular/router';
 })
 export class HomeComponent {
   imgs = ['home1.png','home2.png','home3.png','home4.png']
+  authService = inject(AuthService)
   urlIdx = 0
   loginForm =  new FormGroup({
-    userName: new FormControl(''),
-    password: new FormControl('')
+    username: new FormControl('',{ nonNullable: true, validators: Validators.required }),
+    password: new FormControl('',{ nonNullable: true, validators: Validators.required },),
   })
+  intrervvalId!:number
   ngOnInit(){
     let i:number = 0
  
-    setInterval(()=>{
+    this.intrervvalId = window.setInterval(()=>{
       i++
       if(i >= this.imgs.length) i= 0
       this.urlIdx = i
@@ -27,6 +30,14 @@ export class HomeComponent {
     },4000)
   }
   onSubmit(){
-    console.log(this.loginForm.value)
+    if(this.loginForm.valid){
+   
+
+      this.authService.login(this.loginForm.getRawValue())
+    }
+   
+  }
+  ngOnDestory(){
+    clearInterval(this.intrervvalId)
   }
 }

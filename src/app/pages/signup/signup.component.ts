@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, RequiredValidator, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -9,9 +10,18 @@ import { RouterLink } from '@angular/router';
   styleUrl: './signup.component.scss'
 })
 export class SignupComponent {
+  authService = inject(AuthService)
   signUpForm = new FormGroup({
-    fullname: new FormControl(''),
-    username: new FormControl(''),
-    password: new FormControl(''),
+    username: new FormControl('',{ nonNullable: true, validators: Validators.required }),
+    password: new FormControl('',{ nonNullable: true, validators: Validators.required },),
+    fullname: new FormControl('',{ nonNullable: true, validators: Validators.required }),
   })
+  onsubmit(){
+  
+    if(this.signUpForm.valid){
+   
+
+      this.authService.signup(this.signUpForm.getRawValue())
+    }
+  }
 }
