@@ -1,6 +1,5 @@
 <main>
     <side-nav [showCreateModel]="showCreateModel"/>
-    <!-- <post-list/> -->
-     <app-profile/>
+    <router-outlet/>
 </main>
 <create-post-modal [showCreateModel]="showCreateModel "[hidden]="!showCreateModel()"/>

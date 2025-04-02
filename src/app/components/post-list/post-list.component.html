@@ -1,8 +1,14 @@
 
 <ul>
-   @for (story of storeis(); track story._id) {
-    <li>
-        <post-preview [story]="story"/>
-    </li>
-   }
+    <ng-container *ngIf="stories$ | async as stories; else loading">
+        @for (story of stories; track story._id) {
+
+            <li >
+              <post-preview [story]="story"></post-preview>
+            </li>
+        }
+      </ng-container>
+      <ng-template #loading>
+        <h1>Loading...</h1>
+      </ng-template>
 </ul>
