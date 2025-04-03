@@ -4,10 +4,11 @@ import { HomeComponent } from './pages/home/home.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { PostListComponent } from './components/post-list/post-list.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { authGuard } from './guards/auth-guard.guard';
 
 export const routes: Routes = [
     {
-    path:'',
+    path:'feed',
     component:FeedComponent,
     children:[
            {
@@ -17,9 +18,10 @@ export const routes: Routes = [
             path:'feed/:id',
             component:ProfileComponent
             }
-    ]
+    ],
+    canActivate:[authGuard]
     },{
-        path:'home',
+        path:'',
         component:HomeComponent
     },{
         path:'signup',

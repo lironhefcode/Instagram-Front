@@ -14,7 +14,7 @@ import { AsyncPipe, CommonModule, NgIf } from '@angular/common';
 export class SideNavComponent {
   @Input({required:true}) showCreateModel!:WritableSignal<boolean>
   authService = inject(AuthService)
-  user$: Observable<User>  = this.authService.currentUser$
+  user$: Observable<User | null>  = this.authService.currentUser$
   onCreate(){
     this.showCreateModel.set(true)
   } 

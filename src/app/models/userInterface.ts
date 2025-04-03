@@ -7,7 +7,10 @@ export interface User{
 	password:string,
 	fullname: string,
 	imgUrl: string,
-
+	stories:{
+		_id:string
+		imgUrl:string,
+	}
 	following: ByUserIntreface[]
 	followers:ByUserIntreface[] ,
 	likedStoryIds: String[], 

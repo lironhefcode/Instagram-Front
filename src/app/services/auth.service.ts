@@ -13,8 +13,8 @@ export class AuthService {
     dispatch = injectDispatch()
   url = 'http://localhost:3000/api/auth/'
   router = inject(Router)
-  private currentUserSubject$ = new BehaviorSubject<User >(
-    sessionStorage.getItem('user') ? JSON.parse(sessionStorage.getItem('user')!) : this._emptyUser()
+  private currentUserSubject$ = new BehaviorSubject<User | null >(
+    sessionStorage.getItem('user') ? JSON.parse(sessionStorage.getItem('user')!) :null
   );
   currentUser$ = this.currentUserSubject$.asObservable();
 
@@ -28,7 +28,7 @@ export class AuthService {
 
         this.currentUserSubject$.next(user)
         
-        this.router.navigate([''])
+        this.router.navigate(['/feed'])
       } ),
     ).subscribe(() => { })
   }
@@ -39,17 +39,5 @@ export class AuthService {
       this.currentUserSubject$.next(user)
     } )).subscribe(() => { })
   }
-  _emptyUser(): User{
-   return {
-        _id:'',
-      username: '',
-      password:'',
-      fullname: '',
-      imgUrl:'' ,
-      following: [],
-      followers:[] ,
-      likedStoryIds: [], 
-      savedStoryIds: [],
-    }
-  }
+  
 }

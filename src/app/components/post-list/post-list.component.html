@@ -1,7 +1,7 @@
 
-<ul>
+<ul #postList >
     <ng-container *ngIf="stories$ | async as stories; else loading">
-        @for (story of stories; track story._id) {
+        @for (story of stories; track $index	) {
 
             <li >
               <post-preview [story]="story"></post-preview>

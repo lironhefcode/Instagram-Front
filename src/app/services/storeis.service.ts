@@ -11,13 +11,18 @@ import { BehaviorSubject, tap } from 'rxjs';
 })
 export class StoreisService {
   private currentStoriesSubject$ = new BehaviorSubject<Story[] | null>(null)
-          stories$ = this.currentStoriesSubject$.asObservable()
+    stories$ = this.currentStoriesSubject$.asObservable()
   constructor(private http: HttpClient) { } 
     dispatch = injectDispatch()
     url = 'http://localhost:3000/api/story/'
+
     loadStories(){
-      this.http.get<Story[]>(this.url).pipe(
+     return this.http.get<Story[]>(this.url).pipe(
         tap( (stories:Story[]) =>{
+          if(this.currentStoriesSubject$.value !==  null){
+            stories = [...this.currentStoriesSubject$.value,...stories]
+          }
+          console.log(stories)
           this.currentStoriesSubject$.next(stories)
         })
       )
@@ -30,7 +35,7 @@ export class StoreisService {
         imgUrl: '',
         by: {
           _id: 'a',
-          fullname: '',
+          username: '',
           imgUrl: '',
         },
         comments: [],

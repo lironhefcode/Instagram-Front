@@ -11,3 +11,6 @@ ul{
         padding-bottom: 16px;
     }
 }
+:host{
+    overflow-y: auto;
+}

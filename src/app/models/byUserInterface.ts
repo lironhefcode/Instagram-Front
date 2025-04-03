@@ -2,6 +2,6 @@
 
 export interface ByUserIntreface{
     _id:string,
-    fullname:string,
+    username:string,
     imgUrl:string
 }
