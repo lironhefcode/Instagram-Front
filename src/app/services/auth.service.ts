@@ -39,5 +39,7 @@ export class AuthService {
       this.currentUserSubject$.next(user)
     } )).subscribe(() => { })
   }
-  
+  updateUser(user:User){
+    this.currentUserSubject$.next(user)
+  }
 }
