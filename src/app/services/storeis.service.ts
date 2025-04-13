@@ -17,7 +17,7 @@ export class StoreisService {
     url = 'http://localhost:3000/api/story/'
 
     loadStories(){
-     return this.http.get<Story[]>(this.url).pipe(
+     return this.http.get<Story[]>(this.url,{ withCredentials: true}).pipe(
         tap( (stories:Story[]) =>{
           if(this.currentStoriesSubject$.value !==  null){
             stories = [...this.currentStoriesSubject$.value,...stories]
@@ -47,7 +47,7 @@ export class StoreisService {
     }
     addStory(story:newStory){
       // story.by = logedUser
-      this.http.post(this.url,story)
+      this.http.post(this.url,story,{ withCredentials: true})
     }
  
 }

@@ -32,7 +32,7 @@ export class HomeComponent {
   onSubmit(){
    
     if(this.loginForm.valid){
-      console.log('in')
+      
 
       this.authService.login(this.loginForm.getRawValue())
     }

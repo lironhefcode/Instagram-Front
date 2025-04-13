@@ -45,8 +45,14 @@
             @include flex(space-between,center);
            
             .on-post{
+                display: flex;
+                gap: 4px;
                 svg{
-                    padding: 8px
+                    padding: 8px;
+                    &.red{
+                        fill: red;
+                        stroke: red;
+                    }
                 }
             }
 

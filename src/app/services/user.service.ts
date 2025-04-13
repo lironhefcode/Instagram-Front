@@ -12,9 +12,9 @@ export class UserService {
   constructor(private http: HttpClient) { }
   url = 'http://localhost:3000/api/user/'
   like(postId : string){
-    this.http.post(this.url + 'like',{postId}).pipe(tap(user => this.authService.updateUser(user as User))).subscribe()
+    this.http.post(this.url + 'like',{postId},{ withCredentials: true}).pipe(tap(user => this.authService.updateUser(user as User))).subscribe()
   }
   follow(userId:string ){
-    this.http.post(this.url + 'follow',{userId}).pipe(tap(user => this.authService.updateUser(user as User))).subscribe()
+    this.http.post(this.url + 'follow',{userId},{ withCredentials: true}).pipe(tap(user => this.authService.updateUser(user as User))).subscribe()
   }
 }

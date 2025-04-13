@@ -3,8 +3,9 @@ import { inject, Injectable } from '@angular/core';
 import { injectDispatch } from '@reduxjs/angular-redux';
 import { login } from '../store/slices/user-slice';
 import { User } from '../models/userInterface';
-import { BehaviorSubject, catchError, of, tap } from 'rxjs';
+import { BehaviorSubject, catchError, map, of, tap } from 'rxjs';
 import { Router } from '@angular/router';
+import { ByUserIntreface } from '../models/byUserInterface';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,10 @@ export class AuthService {
 
 
   login(creds:{username:string,password:string}){
-      return this.http.post<User>(this.url+'login',creds).pipe( tap((user :User) => {
+   
+      return this.http.post<User>(this.url+'login',creds,{
+        withCredentials: true
+      }).pipe( tap((user :User) => {
         
         sessionStorage.setItem('user',JSON.stringify(user))
 
@@ -41,5 +45,12 @@ export class AuthService {
   }
   updateUser(user:User){
     this.currentUserSubject$.next(user)
+  }
+  getMiniUser(){
+
+  return this.currentUser$.pipe( map((user) =>{
+  return{_id:user!._id,username:user!.username,imgUrl:user!.imgUrl}
+  }  ))
+
   }
 }
