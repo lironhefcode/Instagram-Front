@@ -44,11 +44,14 @@ export class AuthService {
     } )).subscribe(() => { })
   }
   updateUser(user:User){
-    this.currentUserSubject$.next(user)
+    console.log(user.imgUrl)
+    sessionStorage.setItem('user',JSON.stringify(user))
+    this.currentUserSubject$.next({...user})
   }
   getMiniUser(){
 
   return this.currentUser$.pipe( map((user) =>{
+  
   return{_id:user!._id,username:user!.username,imgUrl:user!.imgUrl}
   }  ))
 

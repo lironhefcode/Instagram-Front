@@ -1,8 +1,10 @@
 <div class="backdrop">
     <div class="content">
         <h3>Change Profile Photo</h3>
-        <button class="prime blue">Upload Photo</button>
+        <button class="prime blue">
+            <label (input)="onInput($event)" >Upload Photo<input   accept="image/*" type="file"></label>
+        </button>
         <button class="prime red">Remove Current Photo</button>
-        <button class="cancel">Cancel</button>
+        <button (click)="onclose()" class="cancel">Cancel</button>
     </div>
 </div>

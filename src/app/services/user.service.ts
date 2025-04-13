@@ -20,4 +20,8 @@ export class UserService {
   getByUsername(username:string) : Observable<User>{
    return this.http.get(`${this.url}${username}`,{ withCredentials: true}) as Observable<User>
   }
+  changeImage(imgUrl : string){
+    
+    this.http.put(this.url+'img',{imgUrl},{ withCredentials: true}).pipe(tap(user => this.authService.updateUser(user as User))).subscribe()
+  }
 }
