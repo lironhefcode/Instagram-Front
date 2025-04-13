@@ -1,6 +1,6 @@
 <div *ngIf="user$ | async as user" class="content">
     <section class="info">
-        <user-profile-image [imgSrc]="user.imgUrl" [size]="150"/>
+        <user-profile-image (click)="showChangePhoto=true" [imgSrc]="user.imgUrl" [size]="150"/>
         <div>
             <div class="opt">
                 <span class="username ">{{user.username}}</span>
@@ -23,4 +23,9 @@
         </div>
         <div></div>
     </section>
+
 </div>
+@if (showChangePhoto) {
+
+    <change-profile-modal />
+}
