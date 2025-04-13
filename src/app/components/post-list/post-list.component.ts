@@ -9,7 +9,7 @@ import { tap } from 'rxjs';
 
 @Component({
   selector: 'post-list',
-  imports: [CommonModule, PostPreviewComponent, AsyncPipe, NgIf, NgFor,],
+  imports: [CommonModule, PostPreviewComponent, AsyncPipe, NgIf, ],
   templateUrl: './post-list.component.html',
   styleUrl: './post-list.component.scss'
 })

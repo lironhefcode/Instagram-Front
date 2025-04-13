@@ -9,3 +9,7 @@ export interface Story{
     comments:comentInterface[],
     likedBy:ByUserIntreface[],
 }
+export interface MiniStory{
+    _id:string,
+    imgUrl:string
+}
