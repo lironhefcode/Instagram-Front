@@ -14,7 +14,7 @@ export class UserService {
   like(postId : string){
     this.http.post(this.url + 'like',{postId},{ withCredentials: true}).pipe(tap(user => this.authService.updateUser(user as User))).subscribe()
   }
-  follow(username:string ){
+  handleFollow(username:string ){
     this.http.post(this.url + 'follow',{username},{ withCredentials: true}).pipe(tap(user => this.authService.updateUser(user as User))).subscribe()
   }
   getByUsername(username:string) : Observable<User>{
