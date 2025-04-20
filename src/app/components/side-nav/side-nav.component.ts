@@ -24,4 +24,7 @@ export class SideNavComponent {
   onNav(username: string){
     this.router.navigate([`/feed/${username}`])
   }
+  onHome(){
+    this.router.navigate([`/feed`])
+  }
 }

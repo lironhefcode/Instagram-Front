@@ -1,80 +1,80 @@
-@import '../../../main.scss';
-.post-preview{
-    header{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-left: 4px;
-        padding-bottom: 12px;
-        .user-info{
-            @include flex(start,center);
-            
-        
-        }
-        
-        .follow{
-            color: $blue;
-            font-weight: 500;
-        }
+@import "../../../main.scss";
+.post-preview {
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 4px;
+    padding-bottom: 12px;
+    .user-info {
+      @include flex(start, center);
+      .name-continer {
+        @include flex(start, center);
+      }
     }
-    .name{
-        font-size: 12px;
-        font-weight: bold;
-        margin-right: 12px;
-        margin-left: 8px;
-        line-height: 18px;
-    }
-    .post{
-        object-fit: cover;
-        width: 100%;
-        height: 390px;
-    }
-    footer{
-        >*{
-            margin-top: 8px;
-        }
-        .name{
-            margin-left: 0;
-        }
-        .likes{
-            margin-top: 0;
-            font-size: 14px;
-            font-weight: 600;
-        }
-        .actions{
-            @include flex(space-between,center);
-           
-            .on-post{
-                display: flex;
-                gap: 4px;
-                svg{
-                    padding: 8px;
-                    &.red{
-                        fill: red;
-                        stroke: red;
-                    }
-                }
-            }
 
-        }
-        .description{
-            @include flex(start,center);
-            margin-top: 8px;
-        }
-        .translate{
-            font-size: 12px;
-            font-weight: 600;
-        }
-        textarea{
-            resize: none;
-            max-height: 80px;
-            border: 0;
-            outline: 0;
-            font-size: 14px;
-            font-family: inherit;
-            height: 20px;
-            padding: 0;
-            width: 90%;
-        }
+    .follow {
+      color: $blue;
+      font-weight: 500;
     }
+  }
+  .name {
+    font-size: 12px;
+    font-weight: bold;
+    margin-right: 12px;
+    margin-left: 8px;
+    line-height: 18px;
+  }
+  .post {
+    object-fit: cover;
+    width: 100%;
+    height: 390px;
+  }
+  footer {
+    > * {
+      margin-top: 8px;
+    }
+    .name {
+      margin-left: 0;
+    }
+    .likes {
+      margin-top: 0;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .actions {
+      @include flex(space-between, center);
+
+      .on-post {
+        display: flex;
+        gap: 4px;
+        svg {
+          padding: 8px;
+          &.red {
+            fill: red;
+            stroke: red;
+          }
+        }
+      }
+    }
+    .description {
+      @include flex(start, center);
+      margin-top: 8px;
+    }
+    .translate {
+      font-size: 12px;
+      font-weight: 600;
+    }
+    textarea {
+      resize: none;
+      max-height: 80px;
+      border: 0;
+      outline: 0;
+      font-size: 14px;
+      font-family: inherit;
+      height: 20px;
+      padding: 0;
+      width: 90%;
+    }
+  }
 }

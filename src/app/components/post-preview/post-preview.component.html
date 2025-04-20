@@ -1,8 +1,10 @@
 <article class="post-preview" *ngIf="(curUser$ | async) as curUser">
 <header>
     <div class="user-info">
-        <user-profile-image [size]="32" [imgSrc]="story.by.imgUrl"/>
-        <span class="name">{{story.by.username}}</span>
+        <div class="name-continer" (click)="toProfile(story.by.username)">
+            <user-profile-image [size]="32" [imgSrc]="story.by.imgUrl"/>
+            <span class="name">{{story.by.username}}</span>
+        </div>
         <span (click)="onFollow()" [style.display]=" (curUser | isfollowing :story.by._id) " class="follow">Follow</span>
     </div>
     <svg aria-label="More options" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><circle cx="12" cy="12" r="1.5"></circle><circle cx="6" cy="12" r="1.5"></circle><circle cx="18" cy="12" r="1.5"></circle></svg>

@@ -9,6 +9,7 @@ import { Observable } from 'rxjs'
 import { User } from '../../models/userInterface'
 import { ByUserIntreface } from '../../models/byUserInterface'
 import { IsfollowingPipe } from '../../pipes/isfollowing.pipe'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'post-preview',
@@ -23,6 +24,7 @@ import { IsfollowingPipe } from '../../pipes/isfollowing.pipe'
   styleUrl: './post-preview.component.scss',
 })
 export class PostPreviewComponent {
+  router = inject(Router)
   @Input({ required: true }) story!: Story
   userService = inject(UserService)
   authService = inject(AuthService)
@@ -59,5 +61,8 @@ export class PostPreviewComponent {
 
   onFollow() {
     this.userService.handleFollow(this.story.by.username)
+  }
+  toProfile(username:string){
+    this.router.navigate([`/feed/${username}`])
   }
 }
