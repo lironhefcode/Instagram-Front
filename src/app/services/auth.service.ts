@@ -41,9 +41,7 @@ export class AuthService {
   }
   signup(creds: { username: string; password: string; fullname: string }) {
     console.log('creds', creds)
-    this.http
-      .post<User>(this.url + 'signup', creds)
-      .pipe(
+    this.http.post<User>(this.url + 'signup', creds).pipe(
         tap((user: User) => {
          this.setUser(user)
         })

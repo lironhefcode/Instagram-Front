@@ -44,7 +44,7 @@ export class StoreisService {
     this.http.post<comentInterface>(this.url+ 'comment',{txt,storyId},{withCredentials:true}).pipe(
       switchMap((comment: comentInterface)=> this.stories$.pipe( map(stories => stories as Story[]), map((stories:Story[] ) => {
         const updatedStories = stories.map(story =>{
-          if(storyId=== story._id){
+          if(storyId=== story._id){ 
             const comments = [...story.comments , comment]
             return {...story,comments}
           } 
