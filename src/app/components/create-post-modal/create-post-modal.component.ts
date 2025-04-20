@@ -1,38 +1,43 @@
-import { Component, inject, Input, signal, WritableSignal } from '@angular/core';
-import { CreatePostImageInputComponent } from '../create-post-image-input/create-post-image-input.component';
-import { CreatePostCropComponent } from '../create-post-crop/create-post-crop.component';
-import { CreatePostTxtComponent } from '../create-post-txt/create-post-txt.component';
-import { StoreisService } from '../../services/storeis.service';
-import { CommonModule } from '@angular/common';
+import { Component, inject, Input, signal, WritableSignal } from '@angular/core'
+import { CreatePostImageInputComponent } from '../create-post-image-input/create-post-image-input.component'
+import { CreatePostCropComponent } from '../create-post-crop/create-post-crop.component'
+import { CreatePostTxtComponent } from '../create-post-txt/create-post-txt.component'
+import { StoreisService } from '../../services/storeis.service'
+import { CommonModule } from '@angular/common'
 
 @Component({
   selector: 'create-post-modal',
-  imports: [CreatePostImageInputComponent,CreatePostCropComponent,CreatePostTxtComponent,CommonModule],
+  imports: [
+    CreatePostImageInputComponent,
+    CreatePostCropComponent,
+    CreatePostTxtComponent,
+    CommonModule,
+  ],
   templateUrl: './create-post-modal.component.html',
-  styleUrl: './create-post-modal.component.scss'
+  styleUrl: './create-post-modal.component.scss',
 })
 export class CreatePostModalComponent {
   storyService = inject(StoreisService)
-  @Input({required:true}) showCreateModel!:WritableSignal<boolean>
+  @Input({ required: true }) showCreateModel!: WritableSignal<boolean>
   mode = 'input'
-  newPost = signal( this.storyService.getEmptyStorty())
+  newPost = signal(this.storyService.getEmptyStorty())
 
-  updateImg = (imgUrl:string) => {
-    console.log('update',this)
-    this.newPost.update(prevState => ({...prevState,imgUrl})) 
+  updateImg = (imgUrl: string) => {
+    console.log('update', this)
+    this.newPost.update((prevState) => ({ ...prevState, imgUrl }))
     this.mode = 'crop'
   }
-   onNext = () =>{
+  onNext = () => {
     this.mode = 'txt'
   }
-  onShare = (txt:string) => {
-    this.newPost.update(prevState => ({...prevState,txt}))
+  onShare = (txt: string) => {
+    this.newPost.update((prevState) => ({ ...prevState, txt }))
+    this.storyService.addStory(this.newPost())
     this.mode = 'input'
-    console.log('post')
-    console.log(this.newPost())
+
     this.close()
   }
-  close(){
+  close() {
     this.mode = 'input'
     this.showCreateModel.set(false)
     this.newPost.set(this.storyService.getEmptyStorty())

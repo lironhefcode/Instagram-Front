@@ -5,7 +5,5 @@ export interface newStory{
 
     txt:string,
     imgUrl:string,
-     by:ByUserIntreface,
-    comments:comentInterface[],
-    likedBy:ByUserIntreface[],
+ 
 }

@@ -11,8 +11,8 @@ export class UserService {
   private authService = inject(AuthService)
   constructor(private http: HttpClient) { }
   url = 'http://localhost:3000/api/user/'
-  like(postId : string){
-    this.http.post(this.url + 'like',{postId},{ withCredentials: true}).pipe(tap(user => this.authService.updateUser(user as User))).subscribe()
+  like(storyId : string){
+    this.http.post(this.url + 'like',{storyId},{ withCredentials: true}).pipe(tap(user => this.authService.updateUser(user as User))).subscribe()
   }
   handleFollow(username:string ){
     this.http.post(this.url + 'follow',{username},{ withCredentials: true}).pipe(tap(user => this.authService.updateUser(user as User))).subscribe()

@@ -4,11 +4,11 @@
     <span (click)="onClick()" class="share">Share</span>
  </header>
  <main>
-    <img src="test.png" alt="">
+    <img [src]="img" alt="">
     <div class="edit">
-        <div class="user">
-            <user-profile-image [size]="28"/>
-            <span>UserName</span>
+        <div  *ngIf=" loggUser$ | async as user" class="user">
+            <user-profile-image [imgSrc]="user.imgUrl" [size]="28"/>
+            <span>{{user.username}}</span>
         </div>
         <textarea [formControl]="txt" placeholder="Add a caption..." name="" id=""></textarea>
     </div>

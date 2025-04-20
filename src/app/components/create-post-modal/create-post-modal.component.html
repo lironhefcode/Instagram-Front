@@ -7,7 +7,7 @@
     }@else if(mode === 'crop'){
           <create-post-crop [onNext]="onNext" [url]="newPost().imgUrl"/>
     }@else if (mode==='txt') {
-      <create-post-txt (share)="onShare($event)"/>
+      <create-post-txt [img]="newPost().imgUrl" (share)="onShare($event)"/>
     }
  
    
