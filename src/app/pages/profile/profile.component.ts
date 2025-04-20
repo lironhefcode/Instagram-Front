@@ -29,6 +29,7 @@ export class ProfileComponent {
   userService = inject(UserService)
   isLoged!: boolean
   isFollowing!: boolean
+  showChangePhoto = false
   user$: Observable<User> = this.authService.currentUser$.pipe(
     map((loggedUser) => loggedUser as User),
     switchMap((loggedUser) =>
@@ -37,11 +38,11 @@ export class ProfileComponent {
         map((routeUser) => {
           if (loggedUser?._id === routeUser._id) {
             this.isLoged = true
+            return loggedUser
+          } else {
             this.isFollowing = loggedUser.following.some(
               (user) => user._id === routeUser._id
             )
-            return loggedUser
-          } else {
             this.isLoged = false
             return routeUser
           }
@@ -50,7 +51,8 @@ export class ProfileComponent {
     )
   )
   handleFollow(username: string) {
+    
     this.userService.handleFollow(username)
   }
-  showChangePhoto = false
+
 }

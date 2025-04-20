@@ -10,6 +10,8 @@ import { User } from '../../models/userInterface'
 import { ByUserIntreface } from '../../models/byUserInterface'
 import { IsfollowingPipe } from '../../pipes/isfollowing.pipe'
 import { Router } from '@angular/router'
+import { FormControl, ReactiveFormsModule } from '@angular/forms'
+import { StoreisService } from '../../services/storeis.service'
 
 @Component({
   selector: 'post-preview',
@@ -19,15 +21,18 @@ import { Router } from '@angular/router'
     IslikedPipe,
     NgIf,
     IsfollowingPipe,
+    ReactiveFormsModule,
   ],
   templateUrl: './post-preview.component.html',
   styleUrl: './post-preview.component.scss',
 })
 export class PostPreviewComponent {
+  txt = new FormControl('')
   router = inject(Router)
   @Input({ required: true }) story!: Story
   userService = inject(UserService)
   authService = inject(AuthService)
+  storyService = inject(StoreisService)
   curUser$ = this.authService.currentUser$ as Observable<User>
   @ViewChild('like') likeBtn!: ElementRef
   onLike() {
@@ -64,5 +69,10 @@ export class PostPreviewComponent {
   }
   toProfile(username:string){
     this.router.navigate([`/feed/${username}`])
+  }
+  comment(){
+    if(this.txt.value){
+      this.storyService.addComment(this.txt.value,this.story._id )
+    }
   }
 }

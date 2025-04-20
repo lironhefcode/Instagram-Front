@@ -10,6 +10,7 @@ export class FollowBtnComponent {
 
 @Output() follow =new EventEmitter
   click(){
+    console.log('click')
     this.follow.emit()
   }
 }

@@ -4,9 +4,10 @@ import { injectDispatch } from '@reduxjs/angular-redux'
 import { load } from '../store/slices/sotries-slice'
 import { HttpClient } from '@angular/common/http'
 import { newStory } from '../models/newStoryInterface'
-import { BehaviorSubject, tap } from 'rxjs'
+import { BehaviorSubject, map, switchMap, tap } from 'rxjs'
 import { AuthService } from './auth.service'
 import { User } from '../models/userInterface'
+import { comentInterface } from '../models/comentInerface'
 
 @Injectable({
   providedIn: 'root',
@@ -25,7 +26,6 @@ export class StoreisService {
         if (this.currentStoriesSubject$.value !== null) {
           stories = [...this.currentStoriesSubject$.value, ...stories]
         }
-        console.log(stories)
         this.currentStoriesSubject$.next(stories)
       })
     )
@@ -35,11 +35,24 @@ export class StoreisService {
       txt: '',
       imgUrl: '',
     }
-
     return emptyStory
   }
   addStory(story: newStory) {
-    console.log('story add', story)
     this.http.post<User>(this.url, story, { withCredentials: true }).pipe(tap((newUser: User) => this.authService.updateUser(newUser))).subscribe()
+  }
+  addComment(txt:string,storyId:string){
+    this.http.post<comentInterface>(this.url+ 'comment',{txt,storyId},{withCredentials:true}).pipe(
+      switchMap((comment: comentInterface)=> this.stories$.pipe( map(stories => stories as Story[]), map((stories:Story[] ) => {
+        const updatedStories = stories.map(story =>{
+          if(storyId=== story._id){
+            const comments = [...story.comments , comment]
+            return {...story,comments}
+          } 
+          return story
+        })
+        this.currentStoriesSubject$.next(updatedStories)
+      }))
+      )
+    ).subscribe()
   }
 }

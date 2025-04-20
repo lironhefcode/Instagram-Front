@@ -25,6 +25,7 @@
         <div class="likes"><span>{{story.likedBy.length}} likes</span></div>
         <div class="description"><span class="name">{{story.by.username}}</span> <p>{{story.txt}}</p></div>
         <div class="translate">See translation</div>
-        <textarea placeholder="Add a Comment..." name="" id=""></textarea>
+        <textarea [formControl]="txt" placeholder="Add a Comment..." name="" id=""></textarea>
+        <span (click)="comment()" class="add-comment" [hidden]="!txt.value">Post</span>
     </footer>
 </article>
