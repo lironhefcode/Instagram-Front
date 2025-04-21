@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { Observable, tap } from 'rxjs';
 import { User } from '../models/userInterface';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { User } from '../models/userInterface';
 export class UserService {
   private authService = inject(AuthService)
   constructor(private http: HttpClient) { }
-  url = 'http://localhost:3000/api/user/'
+  url =  environment.url + 'user/'
   like(storyId : string){
     this.http.post(this.url + 'like',{storyId},{ withCredentials: true}).pipe(tap(user => this.authService.updateUser(user as User))).subscribe()
   }

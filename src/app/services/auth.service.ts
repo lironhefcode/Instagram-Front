@@ -6,13 +6,14 @@ import { User } from '../models/userInterface'
 import { BehaviorSubject, catchError, map, of, tap } from 'rxjs'
 import { Router } from '@angular/router'
 import { ByUserIntreface } from '../models/byUserInterface'
+import { environment } from '../../environments/environment'
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   dispatch = injectDispatch()
-  url = 'http://localhost:3000/api/auth/'
+  url = environment.url + 'auth/'
   router = inject(Router)
   private currentUserSubject$ = new BehaviorSubject<User | null>(
     sessionStorage.getItem('user')

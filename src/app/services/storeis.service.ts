@@ -8,6 +8,7 @@ import { BehaviorSubject, map, switchMap, tap } from 'rxjs'
 import { AuthService } from './auth.service'
 import { User } from '../models/userInterface'
 import { comentInterface } from '../models/comentInerface'
+import { environment } from '../../environments/environment'
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +19,7 @@ export class StoreisService {
   stories$ = this.currentStoriesSubject$.asObservable()
   constructor(private http: HttpClient) {}
   dispatch = injectDispatch()
-  url = 'http://localhost:3000/api/story/'
+  url = environment .url + 'story/'
 
   loadStories() {
     return this.http.get<Story[]>(this.url, { withCredentials: true }).pipe(
