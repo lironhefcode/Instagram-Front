@@ -27,6 +27,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "static.json",
+                "input": "./",
+                "output": "./"
               }
             ],
             "styles": ["src/main.scss", "src/styles.scss"],
