@@ -41,18 +41,20 @@ export class StoreisService {
     this.http.post<User>(this.url, story, { withCredentials: true }).pipe(tap((newUser: User) => this.authService.updateUser(newUser))).subscribe()
   }
   addComment(txt:string,storyId:string){
-    this.http.post<comentInterface>(this.url+ 'comment',{txt,storyId},{withCredentials:true}).pipe(
-      switchMap((comment: comentInterface)=> this.stories$.pipe( map(stories => stories as Story[]), map((stories:Story[] ) => {
-        const updatedStories = stories.map(story =>{
-          if(storyId=== story._id){ 
-            const comments = [...story.comments , comment]
-            return {...story,comments}
-          } 
-          return story
-        })
-        this.currentStoriesSubject$.next(updatedStories)
-      }))
-      )
-    ).subscribe()
+    return  this.http.post<comentInterface>(this.url+ 'comment',{txt,storyId},{withCredentials:true}).pipe(
+    tap((comment : comentInterface) => {
+      const currentStories = this.currentStoriesSubject$.value as Story[];
+      const updatedStories = currentStories.map((story) => {
+        if (story._id === storyId) {
+          return {
+            ...story,
+            comments: [...(story.comments || []), comment],
+          };
+        }
+        return story;
+      })
+      this.currentStoriesSubject$.next(updatedStories)
+    })
+    )
   }
 }

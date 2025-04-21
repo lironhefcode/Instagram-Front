@@ -65,6 +65,10 @@
       font-size: 12px;
       font-weight: 600;
     }
+    .comments-count {
+      font-size: 14px;
+      color: rgb(115, 115, 115);
+    }
     textarea {
       resize: none;
       max-height: 80px;
@@ -75,14 +79,15 @@
       height: 20px;
       padding: 0;
       width: 90%;
-      margin-top: 0px;
+      margin-top: 8px;
     }
     .add-comment {
       color: $blue;
       font-size: 14px;
       font-weight: 600;
-      margin-top: 0px;
+      margin-top: 12px;
       cursor: pointer;
+      margin-top: 8px;
     }
   }
 }

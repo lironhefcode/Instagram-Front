@@ -1,0 +1,22 @@
+@import "../../../main.scss";
+.comments {
+  height: 200px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+
+  .comments-list {
+    padding: 0;
+    margin-top: 10px;
+    .comment-item {
+      text-decoration: none;
+      list-style: none;
+    }
+  }
+  .more {
+    margin-top: 5px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+  }
+}

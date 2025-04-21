@@ -1,0 +1,13 @@
+.comment-preview {
+  display: flex;
+  align-items: center;
+  .name {
+    margin-left: 18px;
+    font-weight: 600;
+    font-size: 14px;
+    margin-right: 6px;
+  }
+  .txt {
+    font-size: 14px;
+  }
+}

@@ -25,6 +25,16 @@
         <div class="likes"><span>{{story.likedBy.length}} likes</span></div>
         <div class="description"><span class="name">{{story.by.username}}</span> <p>{{story.txt}}</p></div>
         <div class="translate">See translation</div>
+        
+        <div  *ngIf="story.comments.length" (click)="onShowComments()">
+            @if (!showComments) {
+
+                <span class="comments-count">View all {{story.comments.length}} comments</span>
+            }@else {
+                <span class="comments-count">Hide comments</span>
+            }
+        </div>
+        <comments-list *ngIf="showComments" [comments]="story.comments"></comments-list>
         <textarea [formControl]="txt" placeholder="Add a Comment..." name="" id=""></textarea>
         <span (click)="comment()" class="add-comment" [hidden]="!txt.value">Post</span>
     </footer>

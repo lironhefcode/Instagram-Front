@@ -12,6 +12,7 @@ import { IsfollowingPipe } from '../../pipes/isfollowing.pipe'
 import { Router } from '@angular/router'
 import { FormControl, ReactiveFormsModule } from '@angular/forms'
 import { StoreisService } from '../../services/storeis.service'
+import { CommentsListComponent } from '../comments-list/comments-list.component'
 
 @Component({
   selector: 'post-preview',
@@ -22,6 +23,7 @@ import { StoreisService } from '../../services/storeis.service'
     NgIf,
     IsfollowingPipe,
     ReactiveFormsModule,
+    CommentsListComponent
   ],
   templateUrl: './post-preview.component.html',
   styleUrl: './post-preview.component.scss',
@@ -35,6 +37,7 @@ export class PostPreviewComponent {
   storyService = inject(StoreisService)
   curUser$ = this.authService.currentUser$ as Observable<User>
   @ViewChild('like') likeBtn!: ElementRef
+  showComments = false
   onLike() {
     let sub
     if (this.likeBtn.nativeElement.classList.contains('red')) {
@@ -72,7 +75,10 @@ export class PostPreviewComponent {
   }
   comment(){
     if(this.txt.value){
-      this.storyService.addComment(this.txt.value,this.story._id )
+      this.storyService.addComment(this.txt.value,this.story._id ).subscribe(() => this.txt.setValue('')) 
     }
+  }
+  onShowComments() {
+    this.showComments = !this.showComments
   }
 }

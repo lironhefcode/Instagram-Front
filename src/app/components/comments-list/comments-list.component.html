@@ -1,0 +1,11 @@
+<div class="comments">
+    <ul *ngFor="let comment of comments" class="comments-list">
+        <li class="comment-item">
+            <comment-preview [comment]="comment"></comment-preview>
+        </li>
+       
+    </ul>
+    <button class="more">
+        <svg aria-label="Load more comments" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Load more comments</title><circle cx="12.001" cy="12.005" fill="none" r="10.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="7.001" x2="17.001" y1="12.005" y2="12.005"></line><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12.001" x2="12.001" y1="7.005" y2="17.005"></line></svg>
+    </button>
+</div>
