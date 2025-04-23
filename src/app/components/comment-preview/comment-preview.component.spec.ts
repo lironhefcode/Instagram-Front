@@ -28,4 +28,15 @@ describe('CommentPreviewComponent', () => {
     const compiled = fixture.nativeElement;
     expect(compiled.querySelector('.txt').textContent).toContain(mockComment.txt);
   });
+  it('should display username',() =>{
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('.name').textContent).toContain(mockComment.by.username);
+  })
+  it('should display user image',() =>{ 
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('img').src).toContain(mockComment.by.imgUrl);
+  })
+  
 });
