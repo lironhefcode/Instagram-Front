@@ -10,10 +10,10 @@ import { Story } from '../../models/stroyInterface';
 })
 export class CreatePostImageInputComponent {
   imageService= inject(UploadImgService)
-  // @Input({required:true} ) updateImg!:Function
+  
  @Output() updateImg= new EventEmitter
   
-  url= ''
+  
   onInput(ev:Event){
     const el = ev.target as HTMLInputElement
     if(el.files){
