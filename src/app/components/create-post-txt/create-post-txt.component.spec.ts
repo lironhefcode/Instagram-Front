@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CreatePostTxtComponent } from './create-post-txt.component';
+import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../../services/auth.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('CreatePostTxtComponent', () => {
   let component: CreatePostTxtComponent;
@@ -8,7 +11,8 @@ describe('CreatePostTxtComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CreatePostTxtComponent]
+      imports: [CreatePostTxtComponent,HttpClientTestingModule],
+      providers: [AuthService],
     })
     .compileComponents();
 

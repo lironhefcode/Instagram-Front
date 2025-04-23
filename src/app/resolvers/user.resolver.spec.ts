@@ -1,10 +1,11 @@
 import { TestBed } from '@angular/core/testing';
-import { ResolveFn } from '@angular/router';
+import { RedirectCommand, ResolveFn } from '@angular/router';
 
 import { userResolver } from './user.resolver';
+import { User } from '../models/userInterface';
 
 describe('userResolver', () => {
-  const executeResolver: ResolveFn<boolean> = (...resolverParameters) => 
+  const executeResolver: ResolveFn<User | RedirectCommand> = (...resolverParameters) => 
       TestBed.runInInjectionContext(() => userResolver(...resolverParameters));
 
   beforeEach(() => {

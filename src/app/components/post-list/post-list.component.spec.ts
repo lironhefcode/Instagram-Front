@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PostListComponent } from './post-list.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { StoreisService } from '../../services/storeis.service';
 
 describe('PostListComponent', () => {
   let component: PostListComponent;
@@ -8,7 +10,8 @@ describe('PostListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PostListComponent]
+      imports: [PostListComponent,HttpClientTestingModule],
+      providers: [StoreisService],
     })
     .compileComponents();
 

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http'
 import { inject, Injectable } from '@angular/core'
-import { injectDispatch } from '@reduxjs/angular-redux'
+
 import { login } from '../store/slices/user-slice'
 import { User } from '../models/userInterface'
 import { BehaviorSubject, catchError, map, of, tap } from 'rxjs'
@@ -12,7 +12,7 @@ import { environment } from '../../environments/environment'
   providedIn: 'root',
 })
 export class AuthService {
-  dispatch = injectDispatch()
+ 
   url = environment.url + 'auth/'
   router = inject(Router)
   private currentUserSubject$ = new BehaviorSubject<User | null>(

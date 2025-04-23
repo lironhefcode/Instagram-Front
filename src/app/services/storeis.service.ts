@@ -18,7 +18,7 @@ export class StoreisService {
   private currentStoriesSubject$ = new BehaviorSubject<Story[] | null>(null)
   stories$ = this.currentStoriesSubject$.asObservable()
   constructor(private http: HttpClient) {}
-  dispatch = injectDispatch()
+
   url = environment .url + 'story/'
 
   loadStories() {
