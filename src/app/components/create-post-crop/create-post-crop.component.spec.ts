@@ -14,10 +14,28 @@ describe('CreatePostCropComponent', () => {
 
     fixture = TestBed.createComponent(CreatePostCropComponent);
     component = fixture.componentInstance;
+    component.url = 'https://example.com/image.jpg';
+    component.onNext = () => {}; 
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should have url and onNext as required inputs', () => {
+    const urlInput = component['url']
+    const onNextInput = component['onNext']
+    expect(urlInput).toBeDefined()
+    expect(onNextInput).toBeDefined()
+  })
+  it('should call onNext when next button is clicked', () => {
+    const onNextSpy = spyOn(component, 'onNext')
+    const nextButton = fixture.nativeElement.querySelector('.next');
+    nextButton.click()
+    expect(onNextSpy).toHaveBeenCalled()
+  })
+  it('should display the image correctly', () => {
+    const image = fixture.nativeElement.querySelector('img');
+    expect(image.src).toBe(component.url);
+  })
 });
