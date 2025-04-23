@@ -20,4 +20,14 @@ describe('FollowBtnComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-});
+  it('should emit follow event on click', () => {
+    spyOn(component.follow, 'emit');
+    component.click();
+    expect(component.follow.emit).toHaveBeenCalled();
+  })
+  it('should invok click method', () => {
+    spyOn(component, 'click').and.callThrough();
+    component.click();
+    expect(component.click).toHaveBeenCalled();
+  })
+})
