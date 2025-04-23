@@ -8,7 +8,7 @@
     <div class="edit">
         <div  *ngIf=" loggUser$ | async as user" class="user">
             <user-profile-image [imgSrc]="user.imgUrl" [size]="28"/>
-            <span>{{user.username}}</span>
+            <span class="username">{{user.username}}</span>
         </div>
         <textarea [formControl]="txt" placeholder="Add a caption..." name="" id=""></textarea>
     </div>
