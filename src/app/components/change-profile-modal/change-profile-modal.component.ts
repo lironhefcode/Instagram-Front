@@ -12,7 +12,7 @@ export class ChangeProfileModalComponent {
   imageService= inject(UploadImgService)
   userService = inject(UserService)
   @Output() close = new EventEmitter
-  onclose(){
+  onClose(){
     this.close.emit(false)
   }
   onInput(event:Event){
@@ -23,7 +23,7 @@ export class ChangeProfileModalComponent {
       this.imageService.uploadImage(el.files[0]).subscribe((imgUrl) => {
         this.userService.changeImage(imgUrl)
         el.value = ''
-        this.onclose()
+        this.onClose()
       })
     }
   }

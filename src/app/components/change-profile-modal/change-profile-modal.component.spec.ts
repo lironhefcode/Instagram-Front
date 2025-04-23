@@ -13,14 +13,52 @@ describe('ChangeProfileModalComponent', () => {
       imports: [ChangeProfileModalComponent,HttpClientTestingModule],
       providers: [UploadImgService],
     })
-    .compileComponents();
+    .compileComponents()
 
-    fixture = TestBed.createComponent(ChangeProfileModalComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    fixture = TestBed.createComponent(ChangeProfileModalComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+it('should call onClose when close button is clicked', () => {
+  const onCloseSpy =  spyOn(component, 'onClose')
+    const closeButton = fixture.nativeElement.querySelector('.cancel')
+    closeButton.click()
+    fixture.detectChanges()
+    expect(onCloseSpy).toHaveBeenCalled()
+})
+
+  it('should call onFileSelected when file input changes', () => {
+    const fileInput = fixture.nativeElement.querySelector('input[type="file"]')
+    const file = new File([''], 'test.png', { type: 'image/png' })
+    const mockEvent = {
+      target: { files: [file] },
+      bubbles: false,
+      cancelBubble: false,
+      cancelable: false,
+      composed: false,
+      currentTarget: null,
+      defaultPrevented: false,
+      eventPhase: 0,
+      isTrusted: true,
+      returnValue: true,
+      srcElement: null,
+      timeStamp: Date.now(),
+      type: 'change',
+      preventDefault: () => {},
+      stopImmediatePropagation: () => {},
+      stopPropagation: () => {}
+    } as unknown as Event
+    
+    spyOn(component, 'onInput')
+    component.onInput(mockEvent as unknown as Event)
+    expect(component.onInput).toHaveBeenCalledWith(mockEvent)
+  } )
+
+
+
+
 });
