@@ -64,7 +64,7 @@ export class PostPreviewComponent {
         )
     }
     sub.unsubscribe()
-    this.userService.like(this.story._id!)
+    this.userService.like(this.story._id)
   }
 
   onFollow() {

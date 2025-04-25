@@ -48,6 +48,18 @@
       .on-post {
         display: flex;
         gap: 4px;
+        .like-btn {
+          background-color: transparent;
+          border: none;
+          outline: none;
+        }
+        svg {
+          padding: 8px;
+          &.red {
+            fill: red;
+            stroke: red;
+          }
+        }
         svg {
           padding: 8px;
           &.red {
