@@ -147,6 +147,8 @@ describe('PostPreviewComponent', () => {
     const addCommentEl = fixture.nativeElement.querySelector('.add-comment')
     expect(addCommentEl).toBeTruthy()
     const commentSpy = spyOn(component, 'comment').and.callThrough()
+    addCommentEl.click()
+    fixture.detectChanges()
     expect(commentSpy).toHaveBeenCalled()
   })
 });
