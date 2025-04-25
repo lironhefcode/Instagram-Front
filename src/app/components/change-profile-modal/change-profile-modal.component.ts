@@ -17,9 +17,7 @@ export class ChangeProfileModalComponent {
   }
   onInput(event:Event){
     const el  = event.target as HTMLInputElement
-    console.log(el.files)
     if(el.files){
-
       this.imageService.uploadImage(el.files[0]).subscribe((imgUrl) => {
         this.userService.changeImage(imgUrl)
         el.value = ''

@@ -23,7 +23,6 @@ export class CreatePostModalComponent {
   newPost = signal(this.storyService.getEmptyStorty())
 
   updateImg = (imgUrl: string) => {
-    console.log('update', this)
     this.newPost.update((prevState) => ({ ...prevState, imgUrl }))
     this.mode = 'crop'
   }

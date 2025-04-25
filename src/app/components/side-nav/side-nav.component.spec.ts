@@ -5,6 +5,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../models/userInterface';
 import { BehaviorSubject } from 'rxjs';
+import { signal } from '@angular/core';
 
 describe('SideNavComponent', () => {
   let component: SideNavComponent;
@@ -34,6 +35,7 @@ describe('SideNavComponent', () => {
 
     fixture = TestBed.createComponent(SideNavComponent);
     component = fixture.componentInstance;
+    component.showCreateModel = signal(false)
     fixture.detectChanges();
     authService = TestBed.inject(AuthService)
    ;

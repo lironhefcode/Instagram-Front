@@ -8,7 +8,6 @@ import { Observable } from 'rxjs';
 
 export const userResolver: ResolveFn<User> = (route, state) => {
  const username = route.params['username']
- console.log(username)
  const userService = inject(UserService)
  const authService = inject(AuthService)
  
