@@ -17,10 +17,7 @@ export class SignupComponent {
     fullname: new FormControl('',{ nonNullable: true, validators: Validators.required }),
   })
   onsubmit(){
-  
     if(this.signUpForm.valid){
-   
-
       this.authService.signup(this.signUpForm.getRawValue())
     }
   }
