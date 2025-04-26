@@ -25,4 +25,11 @@ describe('HomeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should call onSubmit', () =>{
+    const submitBTn = fixture.nativeElement.querySelector('button[type="submit"]')
+    const onSubmitSpy = spyOn(component,'onSubmit').and.callThrough()
+    submitBTn.click()
+    fixture.detectChanges()
+    expect(onSubmitSpy).toHaveBeenCalled()
+  })
 });

@@ -30,10 +30,7 @@ export class HomeComponent {
     },4000)
   }
   onSubmit(){
-   
     if(this.loginForm.valid){
-      
-
       this.authService.login(this.loginForm.getRawValue())
     }
    
