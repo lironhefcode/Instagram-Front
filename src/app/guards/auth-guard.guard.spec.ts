@@ -30,31 +30,37 @@ describe('authGuardGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [{provide: Router ,useValue: mockRouter }
-        ,{provide : ActivatedRoute, useValue : { snapshot : {}}},
-        {provide : AuthService, useValue : mockAuthService},
-        ]
-    })
-    
-    activatedRoute =  TestBed.inject(ActivatedRoute);
-    mockRouter.createUrlTree.calls.reset()
+      providers: [
+        { provide: Router, useValue: mockRouter },
+        { provide: ActivatedRoute, useValue: { snapshot: {} } },
+        { provide: AuthService, useValue: mockAuthService },
+      ],
+    });
+
+    activatedRoute = TestBed.inject(ActivatedRoute);
+    mockRouter.createUrlTree.calls.reset();
   });
 
-  
-  it('should return true', fakeAsync( () => {
-    const result =  TestBed.runInInjectionContext(() => authGuard(null!, null!)) as Observable<boolean>;
-    let guardOutpot = null
-    result.subscribe((res) =>{guardOutpot = res} );
+  it('should return true when user is logged in', fakeAsync(() => {
+    mockAuthService.currentUser$.next(mockUser);
     tick();
-    expect(guardOutpot).toBeTrue();
-}));
-it('should return false',fakeAsync( () => {
-  mockAuthService.currentUser$.next(null)
-  tick()
-  const result =  TestBed.runInInjectionContext(() => authGuard(null!, null!)) as Observable<boolean>;
-  let guardOutpot = null
-  result.subscribe((res) => guardOutpot = res);
-  tick()
-  expect(guardOutpot).toBeFalse();
-})  )
-})
+    const result = TestBed.runInInjectionContext(() => authGuard(null!, null!)) as Observable<boolean>;
+    let guardOutput = null;
+    result.subscribe((res) => (guardOutput = res));
+    tick();
+    expect(guardOutput).toBeTrue();
+  }));
+
+  it('should return false when user is not logged in', fakeAsync(() => {
+    mockAuthService.currentUser$.next(null)
+    tick();
+    const result = TestBed.runInInjectionContext(() => authGuard(null!, null!)) as Observable<boolean>;
+    let guardOutput = null
+    result.subscribe((res) => (guardOutput = res))
+    tick()
+    expect(guardOutput).toBeFalse();
+  }))
+
+  
+})  
+

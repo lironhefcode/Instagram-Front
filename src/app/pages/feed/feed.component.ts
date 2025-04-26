@@ -9,7 +9,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-feed',
-  imports: [SideNavComponent,PostListComponent,CreatePostModalComponent,ProfileComponent,RouterOutlet],
+  imports: [SideNavComponent,CreatePostModalComponent,RouterOutlet],
   templateUrl: './feed.component.html',
   styleUrl: './feed.component.scss'
 })
